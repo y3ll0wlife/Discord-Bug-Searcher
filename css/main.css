@@ -1,0 +1,11 @@
+* {
+  margin: 10px;
+}
+#board {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+#searchTerm {
+  margin-left: 10px;
+  padding: 5px;
+}
