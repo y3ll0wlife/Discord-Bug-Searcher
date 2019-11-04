@@ -44,7 +44,3 @@ function search(nameKey, myArray) {
   }
   document.getElementById("resultNum").innerHTML = "Results found: " + amtFound;
 }
-
-/* 
-Ping 530061924130488351 when done
-*/
