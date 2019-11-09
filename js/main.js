@@ -52,6 +52,7 @@ function createHtml(array, num) {
   amtFound++;
 
   var element = document.createElement("div");
+  element.setAttribute("class", "ticket");
   element.appendChild(document.createTextNode(array[num].name + " "));
   var link = document.createElement("a");
   link.innerHTML = '<a href="' + array[num].shortUrl + '" target=_blank>Trello Link</a>';

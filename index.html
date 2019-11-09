@@ -30,20 +30,24 @@
   </head>
   <body>
     <div>
-      <select class="form-control form-control-sm" id="board">
-        <option>Desktop</option>
-        <option>Linux</option>
-        <option>Android</option>
-        <option>IOS</option>
-        <option>Store</option>
-        <option>Overlay</option>
-        <option>Website</option>
-      </select>
-      <button type="button" class="btn btn-success" onclick="searchAway()">Search away!</button>
-      <input type="text" id="searchTerm" placeholder="Search Term" onClick="this.setSelectionRange(0, this.value.length)" />
+      <h2 id="title">Discord Ticket Finder <a href="https://github.com/y3ll0wlife/Discord-Bug-Searcher" target="_blank"><img src="img/githubLogo.png" alt="" id="githubIMG" /></h2></a>
+      <h5 id="createdBy">Created by <a href="https://github.com/y3ll0wlife/" target="_blank" id="handle">y3ll0wlife</a> and layout inspired by <a href="https://github.com/alangueite/" target="_blank" id="handle">alangueite</a></h5>
+      <div>
+        <select id="board">
+          <option>Desktop</option>
+          <option>Linux</option>
+          <option>Android</option>
+          <option>IOS</option>
+          <option>Store</option>
+          <option>Overlay</option>
+          <option>Website</option>
+        </select>
+        <input type="text" id="searchTerm" placeholder="Search Term" onClick="this.setSelectionRange(0, this.value.length)" />
+        <button id="searchBTN" type="button" onclick="searchAway()">Search away!</button>
+        <h7 id="resultNum"></h7>
+      </div>
 
-      <h7 id="resultNum"></h7>
+      <div id="foundTicket"></div>
     </div>
-    <div id="foundTicket"></div>
   </body>
 </html>
