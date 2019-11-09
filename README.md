@@ -8,11 +8,11 @@
 
 ### Head over to https://y3ll0wlife.github.io/Discord-Bug-Searcher/
 
-### Select the board you wanna search in ![img](https://i.gyazo.com/2be91d39d0c99e5c1861c13f22349fc5.png)
+### Select the board you wanna search in ![img](https://i.gyazo.com/7254323bf2751af30144b671fa106d45.png)
 
-### In the "Search Term" box enter the keyword you wanna search for ![img](https://i.gyazo.com/3d92cd95c045d990453fe891197b9f47.png)
+### In the "Search Term" box enter the keyword you wanna search for ![img](https://i.gyazo.com/61a49ba6648d930261b0ed3a1bb811d6.png)
 
-### Then press "Search Away!" and hope you will find the right ticket ![img](https://i.gyazo.com/02c6541797483bde4b417f3414073412.png)
+### Then press "Search Away!" and hope you will find the right ticket ![img](https://i.gyazo.com/83c67d6e4dffdae1e8d102269fc52a4e.png)
 
 ## Author
 

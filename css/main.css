@@ -30,14 +30,21 @@ select {
   color: #707070;
   padding: 0.3em 10% 0.3em 0;
   margin-right: 1%;
+  border: solid white 2px;
+  border-radius: 8px;
 }
 #searchTerm {
   padding: 0.3em 5% 0.3em 10px;
   margin-right: 1%;
+  border: solid white 2px;
+  border-radius: 8px;
 }
 #searchBTN {
   background-color: #7289da;
   padding: 0.3em 10% 0.3em 10px;
+  border: solid #7289da 2px;
+  border-radius: 8px;
+  outline: none;
 }
 #resultNum {
   margin-left: 0.5em;
