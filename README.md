@@ -21,6 +21,13 @@
 - Twitter: [@y3ll0wLife](https://twitter.com/y3ll0wLife)
 - Github: [y3ll0wlife](https://github.com/y3ll0wlife)
 
+## Editor
+
+👤 **alangueite**
+
+* Twitter: [@alangueite](https://twitter.com/alangueite)
+* Github: [alangueite](https://github.com/alangueite)
+
 ## Show your support
 
 Give a ⭐️ if this project helped you!
