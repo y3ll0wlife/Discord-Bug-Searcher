@@ -21,6 +21,18 @@
 - Twitter: [@y3ll0wLife](https://twitter.com/y3ll0wLife)
 - Github: [y3ll0wlife](https://github.com/y3ll0wlife)
 
+## Editor
+
+👤 **alangueite**
+
+* Twitter: [@alangueite](https://twitter.com/alangueite)
+* Github: [alangueite](https://github.com/alangueite)
+
 ## Show your support
 
 Give a ⭐️ if this project helped you!
+
+
+## 📝 License
+Copyright © 2019 y3ll0wlife  
+This project is [MIT](https://github.com/y3ll0wlife/Discord-Bug-Searcher/blob/master/LICENSE) licensed.
