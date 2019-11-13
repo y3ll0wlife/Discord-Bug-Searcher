@@ -2,6 +2,7 @@
   background-color: #23272a;
   color: #ffffff;
 }
+
 select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -20,11 +21,20 @@ select {
   width: 30px;
   height: auto;
 }
-#handle {
+.handle {
   color: white;
   font-weight: bold;
 }
-
+#more {
+  float: right;
+  background-color: #7289da;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  margin-right: 10px;
+  border: solid #7289da 2px;
+  border-radius: 8px;
+  font-size: 1em;
+  outline: none;
+}
 #board {
   background-color: #23272a;
   color: #707070;
@@ -50,9 +60,20 @@ select {
   margin-left: 0.5em;
 }
 
-#foundTicket {
+#foundTicket,
+#foundMaster {
   margin: 20px;
 }
 .ticket {
   margin-bottom: 0.7em;
+}
+
+.masterBTN {
+  background-color: #7289da;
+  padding: 0.5em 0.5em 0.5em 0.5em;
+  margin: 1% 1% 1% 0.5em;
+  border: solid #7289da 2px;
+  border-radius: 5px;
+  font-size: 1em;
+  outline: none;
 }
