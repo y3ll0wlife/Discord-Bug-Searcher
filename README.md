@@ -16,7 +16,7 @@
 
 ## Tags explained
 
-![img](https://cdn.discordapp.com/attachments/590953351508656130/673605767856652318/unknown.png)
+![img](https://cdn.discordapp.com/attachments/590953351508656130/673606074804207626/unknown.png)
 
 ## Author
 
