@@ -60,7 +60,7 @@ function createHtml(array, num) {
   element.appendChild(link);
 
   // Check if tickets is closed
-  if (array[num].closed == false) {
+  if (array[num].closed == true) {
     var isClosed = document.createElement("h6");
     isClosed.innerHTML = "[ARCHIVED]";
     isClosed.setAttribute("class", "archived");
