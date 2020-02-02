@@ -31,6 +31,7 @@ function searchAway() {
 function search(nameKey, myArray) {
   var textArray = nameKey.split(" ");
   var found = [];
+  if (found.length == 0) document.getElementById("resultNum").innerHTML = "Found no tickets";
   for (var i = 0; i < myArray.length; i++) {
     if (textArray.length >= 2) {
       for (var z = 0; z < textArray.length; z++) {
@@ -55,8 +56,91 @@ function createHtml(array, num) {
   element.setAttribute("class", "ticket");
   element.appendChild(document.createTextNode(array[num].name + " "));
   var link = document.createElement("a");
-  link.innerHTML = '<a href="' + array[num].shortUrl + '" target=_blank>Trello Link</a>';
+  link.innerHTML = '<a href="' + array[num].shortUrl + '" target=_blank class="trelloLink">[TRELLO LINK]</a>';
   element.appendChild(link);
+
+  // Check if tickets is closed
+  if (array[num].closed == false) {
+    var isClosed = document.createElement("h6");
+    isClosed.innerHTML = "[ARCHIVED]";
+    isClosed.setAttribute("class", "archived");
+    element.appendChild(isClosed);
+  }
+  if (array[num].labels.length != 0) {
+    for (let i = 0; i < array[num].labels.length; i++) {
+      var label = document.createElement("h6");
+      // P0 check
+      if (array[num].labels[i].name == "P0: Need an immediate fix" || array[num].labels[i].name == "P0 - Needs an immediate fix" || array[num].labels[i].name == "P0 - Need an immediate fix") {
+        label.innerHTML = "[P0]";
+        label.setAttribute("class", "p0");
+      }
+
+      // P1 check
+      else if (array[num].labels[i].name == "P1: Severe" || array[num].labels[i].name == "P1 - Severe") {
+        label.innerHTML = "[P1]";
+        label.setAttribute("class", "p1");
+      }
+
+      // P2 check
+      else if (array[num].labels[i].name == "P2: Fix can wait a while" || array[num].labels[i].name == "P2: Can wait awhile" || array[num].labels[i].name == "P2 - Can wait a while") {
+        label.innerHTML = "[P2]";
+        label.setAttribute("class", "p2");
+      }
+
+      // P3 check
+      else if (array[num].labels[i].name == "P3: Will get fixed eventually" || array[num].labels[i].name == "P3: Will eventually be fixed" || array[num].labels[i].name == "P3 - Will be fixed eventually") {
+        label.innerHTML = "[P3]";
+        label.setAttribute("class", "p3");
+      }
+
+      // P4 check
+      else if (array[num].labels[i].name == "P4, unlikely to ever be fixed.") {
+        label.innerHTML = "[P4]";
+        label.setAttribute("class", "p4");
+      }
+
+      // High check
+      else if (array[num].labels[i].name.toLowerCase() == "high") {
+        label.innerHTML = "[HIGH]";
+        label.setAttribute("class", "high");
+      }
+
+      // Mid check
+      else if (array[num].labels[i].name.toLowerCase() == "mid") {
+        label.innerHTML = "[MID]";
+        label.setAttribute("class", "mid");
+      }
+
+      // Low check
+      else if (array[num].labels[i].name.toLowerCase() == "low") {
+        label.innerHTML = "[LOW]";
+        label.setAttribute("class", "low");
+      }
+
+      // Info check
+      else if (array[num].labels[i].name == "Need more Information" || array[num].labels[i].name == "Need more info") {
+        label.innerHTML = "[INFO]";
+        label.setAttribute("class", "info");
+      }
+
+      // Mod CNR check
+      else if (array[num].labels[i].name == "Mod can no longer reproduce") {
+        label.innerHTML = "[MOD CNR]";
+        label.setAttribute("class", "mod");
+      }
+
+      // Mod CR check
+      else if (array[num].labels[i].name == "Mod can still reproduce") {
+        label.innerHTML = "[MOD CR]";
+        label.setAttribute("class", "mod");
+      } else {
+        //console.log(array[num].labels[i].name + "  | " + array[num].shortUrl);
+        // Debug only
+      }
+
+      element.appendChild(label);
+    }
+  }
   document.getElementById("foundTicket").appendChild(element);
 
   document.getElementById("resultNum").innerHTML = "Results found: " + amtFound;

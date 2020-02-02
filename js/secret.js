@@ -23,9 +23,7 @@ function search(nameKey, myArray) {
   if (found == 0) {
     var element = document.createElement("div");
     element.setAttribute("class", "ticket");
-    element.appendChild(
-      document.createTextNode("Found no master tickets on that board")
-    );
+    element.appendChild(document.createTextNode("Found no master tickets on that board"));
     document.getElementById("foundMaster").appendChild(element);
   }
 }
@@ -35,8 +33,7 @@ function createHtml(array, num) {
   element.setAttribute("class", "ticket");
   element.appendChild(document.createTextNode(array[num].name + " "));
   var link = document.createElement("a");
-  link.innerHTML =
-    '<a href="' + array[num].shortUrl + '" target=_blank>Trello Link</a>';
+  link.innerHTML = '<a href="' + array[num].shortUrl + '" target=_blank>Trello Link</a>';
   element.appendChild(link);
   document.getElementById("foundMaster").appendChild(element);
 }
