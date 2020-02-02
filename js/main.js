@@ -101,37 +101,37 @@ function createHtml(array, num) {
 
       // High check
       else if (array[num].labels[i].name.toLowerCase() == "high") {
-        label.innerHTML = "[HIGH]";
+        label.innerHTML = "[High]";
         label.setAttribute("class", "high");
       }
 
       // Mid check
       else if (array[num].labels[i].name.toLowerCase() == "mid") {
-        label.innerHTML = "[MID]";
+        label.innerHTML = "[Mid]";
         label.setAttribute("class", "mid");
       }
 
       // Low check
       else if (array[num].labels[i].name.toLowerCase() == "low") {
-        label.innerHTML = "[LOW]";
+        label.innerHTML = "[Low]";
         label.setAttribute("class", "low");
       }
 
       // Info check
       else if (array[num].labels[i].name == "Need more Information" || array[num].labels[i].name == "Need more info") {
-        label.innerHTML = "[INFO]";
+        label.innerHTML = "[Info]";
         label.setAttribute("class", "info");
       }
 
       // Mod CNR check
       else if (array[num].labels[i].name == "Mod can no longer reproduce") {
-        label.innerHTML = "[MOD CNR]";
+        label.innerHTML = "[Mod CNR]";
         label.setAttribute("class", "mod");
       }
 
       // Mod CR check
       else if (array[num].labels[i].name == "Mod can still reproduce") {
-        label.innerHTML = "[MOD CR]";
+        label.innerHTML = "[Mod CR]";
         label.setAttribute("class", "mod");
       } else {
         //console.log(array[num].labels[i].name + "  | " + array[num].shortUrl);
