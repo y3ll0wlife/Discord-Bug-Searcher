@@ -5,23 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     <link rel="shortcut icon" href="img/icon.png" />
     <link rel="stylesheet" href="css/main.css" />
@@ -30,9 +17,29 @@
   </head>
   <body>
     <div>
-      <a href="superSecretMenu.html"> <button id="more" type="button">Super secret menu</button></a>
-      <h2 id="title">Discord Ticket Finder <a href="https://github.com/y3ll0wlife/Discord-Bug-Searcher" target="_blank"><img src="img/githubLogo.png" alt="" id="githubIMG" /></h2></a>
-      <h5 id="createdBy">Created by <a href="https://github.com/y3ll0wlife/" target="_blank" class="handle">y3ll0wlife</a> and layout inspired by <a href="https://github.com/alangueite/" target="_blank" class="handle">alangueite</a></h5>
+      <nav class="navbar navbar-dark">
+        <a class="navbar-brand" href="https://github.com/y3ll0wlife/Discord-Bug-Searcher" target="_blank">
+          <img src="/img/githubLogo.png" width="30" height="30" class="d-inline-block align-top" alt="" />
+          Discord Ticket Finder
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <p id="createdBy">Created by <a href="https://github.com/y3ll0wlife/" target="_blank" class="handle">y3ll0wlife</a> and layout inspired by <a href="https://github.com/alangueite/" target="_blank" class="handle">alangueite</a></p>
+            </li>
+
+            <li class="nav-item">
+              <a href="superSecretMenu.html"> <button id="more" type="button">Super secret menu</button></a>
+            </li>
+          </ul>
+          <br />
+        </div>
+      </nav>
+
       <div>
         <select id="board">
           <option>Desktop</option>
@@ -44,11 +51,10 @@
           <option>Website</option>
         </select>
         <input type="text" id="searchTerm" placeholder="Search Term" onClick="this.setSelectionRange(0, this.value.length)" />
-        <img id="searchBTN" src="img/search.png" alt="search icon" onclick="searchAway()">
+        <img id="searchBTN" src="img/search.png" alt="search icon" onclick="searchAway()" />
         <h7 id="resultNum"></h7>
       </div>
 
-      
       <div id="foundTicket"></div>
     </div>
   </body>
