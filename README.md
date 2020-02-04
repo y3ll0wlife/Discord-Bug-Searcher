@@ -24,7 +24,7 @@
 
 ## TODO
 
-- [x] Author searching | For example `Author Dabbit` to get all the tickets from that person
+- [x] ~~Author searching | For example `Author Dabbit` to get all the tickets from that person~~
 
 ## Author
 
