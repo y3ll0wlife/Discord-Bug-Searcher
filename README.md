@@ -19,7 +19,7 @@
 ![img](https://cdn.discordapp.com/attachments/590953351508656130/673607114262052874/unknown.png)
 
 ## TODO
-- [] Author searching | For example Author:Dabbit for all reports with the reportname Dabbit
+- [ ] Author searching | For example Author:Dabbit for all reports with the reportname Dabbit
 
 ## Author
 
