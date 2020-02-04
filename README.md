@@ -18,8 +18,13 @@
 
 ![img](https://cdn.discordapp.com/attachments/590953351508656130/673607114262052874/unknown.png)
 
+## Special search
+
+- Adding `Author` and than a `reporter name` will give you all the reports with that reporter name | For example `Autor Dabbit` will give you these results![img](https://cdn.discordapp.com/attachments/590953351508656130/674389176254464000/unknown.png)
+
 ## TODO
-- [ ] Author searching | For example Author:Dabbit for all reports with the reportname Dabbit
+
+- [x] Author searching | For example `Author Dabbit` to get all the tickets from that person
 
 ## Author
 

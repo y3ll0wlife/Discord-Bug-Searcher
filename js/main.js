@@ -32,18 +32,40 @@ function search(nameKey, myArray) {
   var textArray = nameKey.split(" ");
   var found = [];
   if (found.length == 0) document.getElementById("resultNum").innerHTML = "Found no tickets";
-  for (var i = 0; i < myArray.length; i++) {
-    if (textArray.length >= 2) {
-      for (var z = 0; z < textArray.length; z++) {
-        if (myArray[i].name.toLowerCase().includes(textArray[z])) {
-          found.push(myArray[i]);
-        }
+
+  if (textArray[0].toLowerCase() == "author") {
+    for (var i = 0; i < myArray.length; i++) {
+      var splitDesc = myArray[i].desc.split("\n");
+
+      if (
+        splitDesc[0]
+          .replace("Reported by ", "")
+          .toLowerCase()
+          .slice(0, -5)
+          .includes(textArray[1].toLowerCase())
+      ) {
+        found.push(myArray[i]);
       }
-    } else {
-      if (myArray[i].name.toLowerCase().includes(nameKey)) createHtml(myArray, i);
+
+      //console.log(myArray[i].desc);
     }
+  } else {
+    for (var i = 0; i < myArray.length; i++) {
+      if (textArray.length >= 2) {
+        for (var z = 0; z < textArray.length; z++) {
+          if (myArray[i].name.toLowerCase().includes(textArray[z])) {
+            found.push(myArray[i]);
+          }
+        }
+      } else {
+        if (myArray[i].name.toLowerCase().includes(nameKey)) createHtml(myArray, i);
+      }
+    }
+    var ticket = found.filter(onlyUnique);
   }
-  var ticket = found.filter(onlyUnique);
+
+  ticket = found;
+
   for (var z = 0; z < ticket.length; z++) createHtml(ticket, z);
 }
 function onlyUnique(value, index, self) {
