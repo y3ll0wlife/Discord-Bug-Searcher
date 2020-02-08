@@ -15,23 +15,65 @@ function searchAway() {
   if (board == "Overlay") boardID = "5cbfb347e17452475d790070";
   if (board == "Website") boardID = "5cc22e6be84de608c791fdb6";
 
-  let url = "https://api.trello.com/1/boards/" + boardID + "/?cards=all";
+  if (board == "All") {
+    let boardsID = [
+      "5771673855f47b547f2decc3", // Desktop
+      "5846f7fdfa2f44d1f47267b0", // Linux
+      "57f2a306ca14741151990900", // Android
+      "57f2d333b99965a6ba8cd7e0", // IOS
+      "5bc7b4adf7d2b839fa6ac108", // Store
+      "5cbfb347e17452475d790070", // Overlay
+      "5cc22e6be84de608c791fdb6" // Website
+    ];
 
-  amtFound = 0;
-  fetch(url)
-    .then(res => res.json())
-    .then(out => {
-      output = out.cards;
-      search(searchTerms, output);
-    })
-    .catch(err => {
-      throw err;
-    });
+    amtFound = 0;
+    for (let i = 0; i < boardsID.length; i++) {
+      let url = "https://api.trello.com/1/boards/" + boardsID[i] + "/?cards=all";
+
+      fetch(url)
+        .then(res => res.json())
+        .then(out => {
+          if (boardsID[i] == "5771673855f47b547f2decc3") boardName = "Desktop board";
+          if (boardsID[i] == "5846f7fdfa2f44d1f47267b0") boardName = "Linux board";
+
+          if (boardsID[i] == "57f2a306ca14741151990900") boardName = "Android board";
+          if (boardsID[i] == "57f2d333b99965a6ba8cd7e0") boardName = "IOS board";
+
+          if (boardsID[i] == "5bc7b4adf7d2b839fa6ac108") boardName = "Store board";
+          if (boardsID[i] == "5cbfb347e17452475d790070") boardName = "Overlay board";
+          if (boardsID[i] == "5cc22e6be84de608c791fdb6") boardName = "Website board";
+
+          var element = document.createElement("div");
+          element.setAttribute("class", "boardLabel");
+          element.appendChild(document.createTextNode(boardName));
+          document.getElementById("foundTicket").appendChild(element);
+
+          output = out.cards;
+          search(searchTerms, output, true);
+        })
+        .catch(err => {
+          throw err;
+        });
+    }
+  } else {
+    let url = "https://api.trello.com/1/boards/" + boardID + "/?cards=all";
+
+    amtFound = 0;
+    fetch(url)
+      .then(res => res.json())
+      .then(out => {
+        output = out.cards;
+        search(searchTerms, output, false);
+      })
+      .catch(err => {
+        throw err;
+      });
+  }
 }
-function search(nameKey, myArray) {
+function search(nameKey, myArray, ignore) {
   var textArray = nameKey.split(" ");
   var found = [];
-  if (found.length == 0) document.getElementById("resultNum").innerHTML = "Found no tickets";
+  if (found.length == 0 && ignore == false) document.getElementById("resultNum").innerHTML = "Found no tickets";
 
   if (textArray[0].toLowerCase() == "author") {
     for (var i = 0; i < myArray.length; i++) {
@@ -163,6 +205,7 @@ function createHtml(array, num) {
       element.appendChild(label);
     }
   }
+
   document.getElementById("foundTicket").appendChild(element);
 
   document.getElementById("resultNum").innerHTML = "Results found: " + amtFound;
