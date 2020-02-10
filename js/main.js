@@ -1,5 +1,11 @@
 function searchAway() {
   document.getElementById("foundTicket").textContent = "";
+  document.getElementById("resultNum").innerHTML = "";
+
+  var element = document.createElement("div");
+  element.setAttribute("class", "spinner-border text-light");
+  element.setAttribute("id", "spinner");
+  document.getElementById("foundTicket").appendChild(element);
 
   board = document.getElementById("board").value;
   var searchTerms = document.getElementById("searchTerm").value.toLowerCase();
@@ -109,6 +115,7 @@ function search(nameKey, myArray, ignore) {
   ticket = found;
 
   for (var z = 0; z < ticket.length; z++) createHtml(ticket, z);
+  document.getElementById("spinner").remove();
 }
 function onlyUnique(value, index, self) {
   return self.indexOf(value) != index;
