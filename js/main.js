@@ -1,3 +1,17 @@
+let amtOfArchived = 0;
+let amtOfInfo = 0;
+let amtOfModCNR = 0;
+let amtOfModCR = 0;
+let amtOfP0 = 0;
+let amtOfP1 = 0;
+let amtOfP2 = 0;
+let amtOfP3 = 0;
+let amtOfP4 = 0;
+let amtOfHigh = 0;
+let amtOfMid = 0;
+let amtOfLow = 0;
+let amtOfNoneLabel = 0;
+
 function searchAway() {
   document.getElementById("foundTicket").textContent = "";
   document.getElementById("resultNum").innerHTML = "";
@@ -115,7 +129,27 @@ function search(nameKey, myArray, ignore) {
   ticket = found;
 
   for (var z = 0; z < ticket.length; z++) createHtml(ticket, z);
-  document.getElementById("spinner").remove();
+  try {
+    document.getElementById("spinner").remove();
+  } catch (error) {}
+
+  if (document.getElementById("printData").checked) {
+    console.warn("Beautiful data");
+    console.log("Amount of tickets: " + amtFound + " (" + Math.round((amtFound / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets that has been archived: " + amtOfArchived + " (" + Math.round((amtOfArchived / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with the INFO tag: " + amtOfInfo + " (" + Math.round((amtOfInfo / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with the MOD CNR tag: " + amtOfModCNR + " (" + Math.round((amtOfModCNR / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with the MOD CR tag: " + amtOfModCR + " (" + Math.round((amtOfModCR / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with the P0 tag: " + amtOfP0 + " (" + Math.round((amtOfP0 / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with the P1 tag: " + amtOfP1 + " (" + Math.round((amtOfP1 / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with the P2 tag: " + amtOfP2 + " (" + Math.round((amtOfP2 / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with the P3 tag: " + amtOfP3 + " (" + Math.round((amtOfP3 / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with the P4 tag: " + amtOfP4 + " (" + Math.round((amtOfP4 / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with the HIGH tag: " + amtOfHigh + " (" + Math.round((amtOfHigh / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with the MID tag: " + amtOfMid + " (" + Math.round((amtOfMid / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with the LOW tag: " + amtOfLow + " (" + Math.round((amtOfLow / amtFound) * 100) + "% of all tickets)");
+    console.log("Amount of tickets with no tag: " + amtOfNoneLabel + " (" + Math.round((amtOfNoneLabel / amtFound) * 100) + "% of all tickets)");
+  }
 }
 function onlyUnique(value, index, self) {
   return self.indexOf(value) != index;
@@ -132,6 +166,7 @@ function createHtml(array, num) {
 
   // Check if tickets is closed
   if (array[num].closed == true) {
+    amtOfArchived++;
     var isClosed = document.createElement("h6");
     isClosed.innerHTML = "[ARCHIVED]";
     isClosed.setAttribute("class", "archived");
@@ -144,69 +179,79 @@ function createHtml(array, num) {
       if (array[num].labels[i].name == "P0: Need an immediate fix" || array[num].labels[i].name == "P0 - Needs an immediate fix" || array[num].labels[i].name == "P0 - Need an immediate fix") {
         label.innerHTML = "[P0]";
         label.setAttribute("class", "p0");
+        amtOfP0++;
       }
 
       // P1 check
       else if (array[num].labels[i].name == "P1: Severe" || array[num].labels[i].name == "P1 - Severe") {
         label.innerHTML = "[P1]";
         label.setAttribute("class", "p1");
+        amtOfP1++;
       }
 
       // P2 check
       else if (array[num].labels[i].name == "P2: Fix can wait a while" || array[num].labels[i].name == "P2: Can wait awhile" || array[num].labels[i].name == "P2 - Can wait a while") {
         label.innerHTML = "[P2]";
         label.setAttribute("class", "p2");
+        amtOfP2++;
       }
 
       // P3 check
       else if (array[num].labels[i].name == "P3: Will get fixed eventually" || array[num].labels[i].name == "P3: Will eventually be fixed" || array[num].labels[i].name == "P3 - Will be fixed eventually") {
         label.innerHTML = "[P3]";
         label.setAttribute("class", "p3");
+        amtOfP3++;
       }
 
       // P4 check
       else if (array[num].labels[i].name == "P4, unlikely to ever be fixed.") {
         label.innerHTML = "[P4]";
         label.setAttribute("class", "p4");
+        amtOfP4++;
       }
 
       // High check
       else if (array[num].labels[i].name.toLowerCase() == "high") {
         label.innerHTML = "[High]";
         label.setAttribute("class", "high");
+        amtOfHigh++;
       }
 
       // Mid check
       else if (array[num].labels[i].name.toLowerCase() == "mid") {
         label.innerHTML = "[Mid]";
         label.setAttribute("class", "mid");
+        amtOfMid++;
       }
 
       // Low check
       else if (array[num].labels[i].name.toLowerCase() == "low") {
         label.innerHTML = "[Low]";
         label.setAttribute("class", "low");
+        amtOfLow++;
       }
 
       // Info check
       else if (array[num].labels[i].name == "Need more Information" || array[num].labels[i].name == "Need more info") {
         label.innerHTML = "[Info]";
         label.setAttribute("class", "info");
+        amtOfInfo++;
       }
 
       // Mod CNR check
       else if (array[num].labels[i].name == "Mod can no longer reproduce") {
         label.innerHTML = "[Mod CNR]";
         label.setAttribute("class", "mod");
+        amtOfModCNR++;
       }
 
       // Mod CR check
       else if (array[num].labels[i].name == "Mod can still reproduce") {
         label.innerHTML = "[Mod CR]";
         label.setAttribute("class", "mod");
+        amtOfModCR++;
       } else {
-        //console.log(array[num].labels[i].name + "  | " + array[num].shortUrl);
-        // Debug only
+        amtOfNoneLabel++;
       }
 
       element.appendChild(label);
