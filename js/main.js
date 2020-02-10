@@ -11,6 +11,7 @@ let amtOfHigh = 0;
 let amtOfMid = 0;
 let amtOfLow = 0;
 let amtOfNoneLabel = 0;
+let waitForItToBeDone = 0;
 
 function searchAway() {
   document.getElementById("foundTicket").textContent = "";
@@ -133,7 +134,7 @@ function search(nameKey, myArray, ignore) {
     document.getElementById("spinner").remove();
   } catch (error) {}
 
-  if (document.getElementById("printData").checked) {
+  if (document.getElementById("printData").checked && document.getElementById("board").value != "All") {
     console.warn("Beautiful data");
     console.log("Amount of tickets: " + amtFound + " (" + Math.round((amtFound / amtFound) * 100) + "% of all tickets)");
     console.log("Amount of tickets that has been archived: " + amtOfArchived + " (" + Math.round((amtOfArchived / amtFound) * 100) + "% of all tickets)");
@@ -149,6 +150,54 @@ function search(nameKey, myArray, ignore) {
     console.log("Amount of tickets with the MID tag: " + amtOfMid + " (" + Math.round((amtOfMid / amtFound) * 100) + "% of all tickets)");
     console.log("Amount of tickets with the LOW tag: " + amtOfLow + " (" + Math.round((amtOfLow / amtFound) * 100) + "% of all tickets)");
     console.log("Amount of tickets with no tag: " + amtOfNoneLabel + " (" + Math.round((amtOfNoneLabel / amtFound) * 100) + "% of all tickets)");
+
+    amtOfArchived = 0;
+    amtOfInfo = 0;
+    amtOfModCNR = 0;
+    amtOfModCR = 0;
+    amtOfP0 = 0;
+    amtOfP1 = 0;
+    amtOfP2 = 0;
+    amtOfP3 = 0;
+    amtOfP4 = 0;
+    amtOfHigh = 0;
+    amtOfMid = 0;
+    amtOfLow = 0;
+    amtOfNoneLabel = 0;
+  } else {
+    waitForItToBeDone++;
+
+    if (waitForItToBeDone == 7) {
+      console.warn("Beautiful data");
+      console.log("Amount of tickets: " + amtFound + " (" + Math.round((amtFound / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets that has been archived: " + amtOfArchived + " (" + Math.round((amtOfArchived / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with the INFO tag: " + amtOfInfo + " (" + Math.round((amtOfInfo / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with the MOD CNR tag: " + amtOfModCNR + " (" + Math.round((amtOfModCNR / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with the MOD CR tag: " + amtOfModCR + " (" + Math.round((amtOfModCR / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with the P0 tag: " + amtOfP0 + " (" + Math.round((amtOfP0 / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with the P1 tag: " + amtOfP1 + " (" + Math.round((amtOfP1 / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with the P2 tag: " + amtOfP2 + " (" + Math.round((amtOfP2 / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with the P3 tag: " + amtOfP3 + " (" + Math.round((amtOfP3 / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with the P4 tag: " + amtOfP4 + " (" + Math.round((amtOfP4 / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with the HIGH tag: " + amtOfHigh + " (" + Math.round((amtOfHigh / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with the MID tag: " + amtOfMid + " (" + Math.round((amtOfMid / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with the LOW tag: " + amtOfLow + " (" + Math.round((amtOfLow / amtFound) * 100) + "% of all tickets)");
+      console.log("Amount of tickets with no tag: " + amtOfNoneLabel + " (" + Math.round((amtOfNoneLabel / amtFound) * 100) + "% of all tickets)");
+
+      amtOfArchived = 0;
+      amtOfInfo = 0;
+      amtOfModCNR = 0;
+      amtOfModCR = 0;
+      amtOfP0 = 0;
+      amtOfP1 = 0;
+      amtOfP2 = 0;
+      amtOfP3 = 0;
+      amtOfP4 = 0;
+      amtOfHigh = 0;
+      amtOfMid = 0;
+      amtOfLow = 0;
+      amtOfNoneLabel = 0;
+    }
   }
 }
 function onlyUnique(value, index, self) {
@@ -256,9 +305,7 @@ function createHtml(array, num) {
 
       element.appendChild(label);
     }
+    document.getElementById("foundTicket").appendChild(element);
+    document.getElementById("resultNum").innerHTML = "Results found: " + amtFound;
   }
-
-  document.getElementById("foundTicket").appendChild(element);
-
-  document.getElementById("resultNum").innerHTML = "Results found: " + amtFound;
 }
