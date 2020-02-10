@@ -198,7 +198,7 @@ function search(nameKey, myArray, ignore) {
       amtOfLow = 0;
       amtOfNoneLabel = 0;
 
-      waitForItToBeDone == 0;
+      waitForItToBeDone = 0;
     }
   }
 }
