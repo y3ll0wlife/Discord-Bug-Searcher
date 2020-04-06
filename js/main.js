@@ -13,7 +13,12 @@ let amtOfLow = 0;
 let amtOfNoneLabel = 0;
 let waitForItToBeDone = 0;
 
+let isLoadingAns = false;
+
 function searchAway() {
+  if (isLoadingAns) return;
+  document.getElementById("searchBTN").style.backgroundColor = "#7289DA";
+
   document.getElementById("foundTicket").textContent = "";
   document.getElementById("resultNum").innerHTML = "";
 
@@ -25,6 +30,8 @@ function searchAway() {
   board = document.getElementById("board").value;
   var searchTerms = document.getElementById("searchTerm").value.toLowerCase();
   boardID = "";
+
+  isLoadingAns = true;
 
   if (board == "Desktop") boardID = "5771673855f47b547f2decc3";
   if (board == "Linux") boardID = "5846f7fdfa2f44d1f47267b0";
@@ -44,7 +51,7 @@ function searchAway() {
       "57f2d333b99965a6ba8cd7e0", // IOS
       "5bc7b4adf7d2b839fa6ac108", // Store
       "5cbfb347e17452475d790070", // Overlay
-      "5cc22e6be84de608c791fdb6" // Website
+      "5cc22e6be84de608c791fdb6", // Website
     ];
 
     amtFound = 0;
@@ -52,8 +59,8 @@ function searchAway() {
       let url = "https://api.trello.com/1/boards/" + boardsID[i] + "/?cards=all";
 
       fetch(url)
-        .then(res => res.json())
-        .then(out => {
+        .then((res) => res.json())
+        .then((out) => {
           if (boardsID[i] == "5771673855f47b547f2decc3") boardName = "Desktop board";
           if (boardsID[i] == "5846f7fdfa2f44d1f47267b0") boardName = "Linux board";
 
@@ -72,7 +79,7 @@ function searchAway() {
           output = out.cards;
           search(searchTerms, output, true);
         })
-        .catch(err => {
+        .catch((err) => {
           throw err;
         });
     }
@@ -81,12 +88,12 @@ function searchAway() {
 
     amtFound = 0;
     fetch(url)
-      .then(res => res.json())
-      .then(out => {
+      .then((res) => res.json())
+      .then((out) => {
         output = out.cards;
         search(searchTerms, output, false);
       })
-      .catch(err => {
+      .catch((err) => {
         throw err;
       });
   }
@@ -96,35 +103,23 @@ function search(nameKey, myArray, ignore) {
   var found = [];
   if (found.length == 0 && ignore == false) document.getElementById("resultNum").innerHTML = "Found no tickets";
 
+  // Author searching
   if (textArray[0].toLowerCase() == "author") {
     for (var i = 0; i < myArray.length; i++) {
       var splitDesc = myArray[i].desc.split("\n");
 
-      if (
-        splitDesc[0]
-          .replace("Reported by ", "")
-          .toLowerCase()
-          .slice(0, -5)
-          .includes(textArray[1].toLowerCase())
-      ) {
+      if (splitDesc[0].replace("Reported by ", "").toLowerCase().slice(0, -5).includes(textArray[1].toLowerCase())) {
         found.push(myArray[i]);
       }
-
-      //console.log(myArray[i].desc);
     }
   } else {
     for (var i = 0; i < myArray.length; i++) {
-      if (textArray.length >= 2) {
-        for (var z = 0; z < textArray.length; z++) {
-          if (myArray[i].name.toLowerCase().includes(textArray[z])) {
-            found.push(myArray[i]);
-          }
-        }
-      } else {
-        if (myArray[i].name.toLowerCase().includes(nameKey)) createHtml(myArray, i);
+      if (myArray[i].name.toLowerCase().includes(nameKey)) {
+        found.push(myArray[i]);
       }
     }
-    var ticket = found.filter(onlyUnique);
+
+    var ticket = found;
   }
 
   ticket = found;
@@ -132,6 +127,8 @@ function search(nameKey, myArray, ignore) {
   for (var z = 0; z < ticket.length; z++) createHtml(ticket, z);
   try {
     document.getElementById("spinner").remove();
+    isLoadingAns = false;
+    document.getElementById("searchBTN").style.backgroundColor = "#23272A";
   } catch (error) {}
 
   if (document.getElementById("printData").checked && document.getElementById("board").value != "All") {
@@ -307,7 +304,7 @@ function createHtml(array, num) {
 
       element.appendChild(label);
     }
-    document.getElementById("foundTicket").appendChild(element);
-    document.getElementById("resultNum").innerHTML = "Results found: " + amtFound;
   }
+  document.getElementById("foundTicket").appendChild(element);
+  document.getElementById("resultNum").innerHTML = "Results found: " + amtFound;
 }
